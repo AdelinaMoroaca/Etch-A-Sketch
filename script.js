@@ -1,25 +1,29 @@
 const container = document.getElementById('container');
+//let drawTable = document.createElement('div');
+let square = document.createElement('div');
 
-function createGrid(num){
+const gridTable = (num) => {
     container.style.border = '2px solid red';
     container.style.width = '160px';
     container.style.height = '160px';
-
     container.style.display = 'flex';
     container.style.flexFlow = 'row wrap';
     container.style.justifyContent = 'center';
     container.style.alignItems = 'center';
-
-    for (i=0; i < num; i++){
-    let verticalSquare = document.createElement('div');
-    verticalSquare.style.margin = '0';
-    verticalSquare.style.backgroundColor = 'pink';
-    verticalSquare.style.height = '10px';
-    verticalSquare.style.width = '10px';
-    container.appendChild(verticalSquare); 
+    for (i=0; i < num; i++) {
+        for (j=0; j < num; j++) {
+            let square = document.createElement('div');
+            square.style.margin = '0';
+            square.style.backgroundColor = 'pink';
+            square.style.height = '10px';
+            square.style.width = '10px';
+            container.appendChild(square); 
+            square.addEventListener('mouseenter', function(){
+               square.style.backgroundColor = 'blue';
+            })
+        }
     }
 }
 
-createGrid(256)
-
+gridTable(16)
 
