@@ -1,3 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    --bg:#058875;
+    --white:#fff;
+    --black:#000;
+    --dark:#02051d;
+
+    --accent1-lighter:#ffb3ba;
+    --accent1-light:#fb615a;
+    --accent1:#ff1b26;
+    --accent1-dark:#940008;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.functionality, .content {
+    width: 400px;
+    height: 600px;
+    border: 1px solid var(--bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+#pixel-bar{
+    width: 100%;
+    height: 50px;
+    border: 1px solid var(--bg);
+
+
+}
 #container {
     margin: 50px;
     padding: 20px;
@@ -13,3 +54,11 @@
 .demo{
     background-color: aqua;
 }
+
+
+/* Pixel bar */
+.content-bar, .slide-bar{
+    width: 100%;
+    border: 1px solid magenta;
+}
+

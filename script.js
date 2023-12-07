@@ -2,6 +2,8 @@ const container = document.getElementById('container');
 const drawTable = document.createElement('div');
 let square = document.createElement('div');
 let button = document.getElementById('pixel');
+let slide = document.getElementById('range');
+let outputPixel = document.getElementById('pixelNumber');
 
 container.style.border = '2px solid red';
 container.style.backgroundColor = 'purple';
@@ -43,6 +45,38 @@ gridTable(16)
 button.addEventListener('click',function(){
 
     let newDimension = parseInt(prompt("enter the number of squares per side for your new grid"));
+
+    if (newDimension <= 100) {
+        drawTable.textContent= '';
+
+        const gridTable = (newDimension) => {
+            for (i=0; i < newDimension; i++) {
+                for (j=0; j < newDimension; j++) {
+                    let newSquare = document.createElement('div');
+                    newSquare.style.backgroundColor = 'red';
+                    newSquare.style.height = `${256/newDimension}px`;
+                    newSquare.style.width = `${256/newDimension}px`;
+                    drawTable.appendChild(newSquare); 
+                    newSquare.addEventListener('mouseenter', function(){
+                        newSquare.style.backgroundColor = 'blue';
+                    })
+                }
+            }
+        } 
+        gridTable(newDimension)
+    } else {
+        console.log("NOK")
+    }
+
+})
+
+
+outputPixel.textContent = slide.value;
+
+slide.addEventListener('click', function(){
+
+    let newDimension = parseInt(slide.value);
+    outputPixel.textContent = this.value;
 
     if (newDimension <= 100) {
         drawTable.textContent= '';
