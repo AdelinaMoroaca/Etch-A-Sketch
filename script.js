@@ -7,8 +7,8 @@ let outputPixel = document.getElementById('pixelNumber');
 
 container.style.border = '2px solid red';
 container.style.backgroundColor = 'purple';
-container.style.width = '300px';
-container.style.height = '300px';
+container.style.width = '450px';
+container.style.height = '450px';
 container.style.display = 'flex';
 container.style.justifyContent = 'center';
 container.style.alignItems = 'center';
@@ -42,33 +42,33 @@ const gridTable = (num) => {
 gridTable(16)
 
 
-button.addEventListener('click',function(){
+// button.addEventListener('click',function(){
 
-    let newDimension = parseInt(prompt("enter the number of squares per side for your new grid"));
+//     let newDimension = parseInt(prompt("enter the number of squares per side for your new grid"));
 
-    if (newDimension <= 100) {
-        drawTable.textContent= '';
+//     if (newDimension <= 100) {
+//         drawTable.textContent= '';
 
-        const gridTable = (newDimension) => {
-            for (i=0; i < newDimension; i++) {
-                for (j=0; j < newDimension; j++) {
-                    let newSquare = document.createElement('div');
-                    newSquare.style.backgroundColor = 'red';
-                    newSquare.style.height = `${256/newDimension}px`;
-                    newSquare.style.width = `${256/newDimension}px`;
-                    drawTable.appendChild(newSquare); 
-                    newSquare.addEventListener('mouseenter', function(){
-                        newSquare.style.backgroundColor = 'blue';
-                    })
-                }
-            }
-        } 
-        gridTable(newDimension)
-    } else {
-        console.log("NOK")
-    }
+//         const gridTable = (newDimension) => {
+//             for (i=0; i < newDimension; i++) {
+//                 for (j=0; j < newDimension; j++) {
+//                     let newSquare = document.createElement('div');
+//                     newSquare.style.backgroundColor = 'red';
+//                     newSquare.style.height = `${256/newDimension}px`;
+//                     newSquare.style.width = `${256/newDimension}px`;
+//                     drawTable.appendChild(newSquare); 
+//                     newSquare.addEventListener('mouseenter', function(){
+//                         newSquare.style.backgroundColor = 'blue';
+//                     })
+//                 }
+//             }
+//         } 
+//         gridTable(newDimension)
+//     } else {
+//         console.log("NOK")
+//     }
 
-})
+// })
 
 
 outputPixel.textContent = slide.value;
