@@ -43,18 +43,18 @@ const gridTable = (num) => {
             square.style.height = `${300/num}px`;
             square.style.width = `${300/num}px`;
             drawTable.appendChild(square); 
-            square.addEventListener('mouseenter', function(){
-            
-                
-                square.style.backgroundColor = newColor;
 
-            // //    square.style.backgroundColor = 'black';
-            // //    square.style.backgroundColor = 'yellow';
-
+            drawTable.addEventListener('mousedown', function(){
+                square.addEventListener('mouseenter', function(){
+                    square.style.backgroundColor = newColor; 
+                }),
+                square.style.pointerEvents= 'auto';
+            });
+            drawTable.addEventListener('mouseup', function(){
+                 square.style.pointerEvents= 'none'; 
             })
         }
     }
-
 }
 
 gridTable(16)
@@ -73,33 +73,35 @@ function changePixelNumber(){
     }
 
 }
-
-
-
 //------------------------------------
 function changeColor(){
-    
-    // document.body.style.backgroundColor = color;
-    // square.style.backgroundColor = color;
-    // drawTable.textContent = '';
-    // square.style.backgroundColor = colorPicker.value;
     newColor = colorPicker.value;
     square.style.backgroundColor = newColor;
-
-    
-
     console.log(colorPicker.value)
 } 
 
+function getRandomInt(max) {
+	var nr = Math.floor(Math.random() * max);
+    return '#' + nr*10;
+}
 
-
+console.log(getRandomInt(99999));
 
 function multicolor(){
- console.log("color");
- newColor = 'linear-gradient(' +(Math.random()*360)+'deg,'+getRandomColor()+'0%' + getRandomColor()+' 100%)';
- square.style.backgroundColor = newColor;
+    console.log('final ', getRandomInt(99999));
+    newColor = getRandomInt(99999);
+    square.style.backgroundColor = newColor;
+    let multiColor = '';
+    for (i=0; i < newColor.length+1; i++) {
+        for (j=0; j < newColor.length+1; j++) {
+            // console.log('final Color 1', newColor);
+            multiColor = newColor ;
+            // square.style.backgroundColor = multiColor;
+            // console.log('Color event', newColor);
 
- console.log(colorPicker.value)
+            console.log('final Color event', multiColor);
+        }
+    }
 }
 
 function eraseDrawTable(){
@@ -116,5 +118,5 @@ slide.addEventListener('click', changePixelNumber)
 buttonColorType.addEventListener('click', changeColor)
 
 buttonRainbow.addEventListener('click', multicolor)
-buttonErase.addEventListener('click', eraseDrawTable) //
+buttonErase.addEventListener('click', eraseDrawTable)
 buttonClear.addEventListener('click', clear)
