@@ -5,12 +5,11 @@ let button = document.getElementById('pixel');
 let slide = document.getElementById('range');
 let outputPixel = document.getElementById('pixelNumber');
 
-
 let buttonColorType = document.getElementById('colorType');
 let buttonRainbow = document.getElementById('rainbowType');
 let buttonErase = document.getElementById('erase');
 let buttonClear = document.getElementById('clear');
-let colorPicker = document.getElementById('colorPicker');
+let colorPicker =document.getElementById('colorPicker');
 
 container.style.border = '2px solid red';
 container.style.backgroundColor = 'purple';
@@ -20,38 +19,38 @@ container.style.display = 'flex';
 container.style.justifyContent = 'center';
 container.style.alignItems = 'center';
 
+
 drawTable.style.display = 'flex';
 drawTable.style.flexFlow = 'row wrap';
 drawTable.style.backgroundColor = 'pink';
 drawTable.style.border = '2px solid yellow';
 drawTable.style.width = '300px';
 drawTable.style.height = '300px';
-container.appendChild(drawTable)
 
 let selectColor = 'black';
+//e - event
+//e.target = square
 let drawColor = (e, color) => e.target.style.backgroundColor = color;
-// let something = () => ;
 
-// let selectColor = 'black';
+container.appendChild(drawTable)
 
 const gridTable = (num) => {
-    for (i = 0; i < num; i++) {
-        for (j = 0; j < num; j++) {
+    for (i=0; i < num; i++) {
+        for (j=0; j < num; j++) {
             let square = document.createElement('div');
+            //add class to square element
             square.classList.add('drawSquare');
+
             square.style.height = `${300/num}px`;
             square.style.width = `${300/num}px`;
-            drawTable.appendChild(square);
+            drawTable.appendChild(square); 
 
-            //1 method:
+            //call drawColor with event.target and color params
             square.addEventListener('mouseover', function (e){
                 drawColor(e, selectColor);
             })
-          
         }
-
     }
-
 }
 
 gridTable(16)
@@ -64,30 +63,38 @@ function changePixelNumber(){
     let newDimension = parseInt(slide.value);
     outputPixel.textContent = this.value;
 
-    if (newDimension <= 100){
-        drawTable.textContent = '';
+    if (newDimension <= 100) {
+        drawTable.textContent= '';
         gridTable(newDimension)
+    } else {
+        console.log("NOK")
     }
+
 }
- 
+
 //CHANGE COLOR
+
 function changeColor(){
-    console.log('ok')
     selectColor = colorPicker.value;
+    //call drawColor with event.target and color params
     drawTable.addEventListener('mouseover', function(e){
         if(e.target.classList.contains('drawSquare')){
             drawColor(e, selectColor)
         }
     })
-}
+} 
 
 //RAINBOW COLOR
+
+//create randomRGBA color function
 function randomRGBA() {
-    let o = Math.round, r = Math.random, s = 255;
+    var o = Math.round, r = Math.random, s = 255;
     return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
 }
 
-function createRainbowColor(){
+
+
+function multicolor(){
     drawTable.addEventListener('mouseover', function(e){
         //call drawColor with event.target and color params only to square elements
         if(e.target.classList.contains('drawSquare')){
@@ -95,11 +102,11 @@ function createRainbowColor(){
         }
     })
     
+
 }
 
-
-
 //ERASE COLOR
+
 function eraseDrawTable(){
     selectColor = drawTable.style.backgroundColor;
     drawTable.addEventListener('mouseover', function(e){
@@ -112,13 +119,15 @@ function eraseDrawTable(){
 
 //CLEAR COLOR
 
-function clearTable(){
-    window.location = window.location;
+function clear(){
+    window.location=window.location;
 }
 
 //ELEMENTS EVENTS
-slide.addEventListener('click', changePixelNumber);
-buttonColorType.addEventListener('click', changeColor);
-buttonRainbow.addEventListener('click', createRainbowColor)
+
+slide.addEventListener('click', changePixelNumber)
+buttonColorType.addEventListener('click', changeColor)
+
+buttonRainbow.addEventListener('click', multicolor)
 buttonErase.addEventListener('click', eraseDrawTable)
-buttonClear.addEventListener('click', clearTable)
+buttonClear.addEventListener('click', clear)
