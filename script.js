@@ -12,7 +12,7 @@ let buttonErase = document.getElementById('erase');
 let buttonClear = document.getElementById('clear');
 let colorPicker = document.getElementById('colorPicker');
 
-container.style.border = '2px solid red';
+container.style.border = '2px solid black';
 container.style.backgroundColor = 'purple';
 container.style.width = '400px';
 container.style.height = '400px';
@@ -22,15 +22,14 @@ container.style.alignItems = 'center';
 
 drawTable.style.display = 'flex';
 drawTable.style.flexFlow = 'row wrap';
-drawTable.style.backgroundColor = 'pink';
-drawTable.style.border = '2px solid yellow';
+drawTable.style.backgroundColor = 'white';
+drawTable.style.border = '2px solid black';
 drawTable.style.width = '300px';
 drawTable.style.height = '300px';
 container.appendChild(drawTable)
 
 let selectColor = 'black';
 let drawColor = (e, color) => e.target.style.backgroundColor = color;
-// let something = () => ;
 
 // let selectColor = 'black';
 
@@ -47,11 +46,8 @@ const gridTable = (num) => {
             square.addEventListener('mouseover', function (e){
                 drawColor(e, selectColor);
             })
-          
         }
-
     }
-
 }
 
 gridTable(16)
@@ -59,7 +55,6 @@ gridTable(16)
 //CHANGE PIXEL NUMBER
 
 outputPixel.textContent = slide.value;
-
 function changePixelNumber(){
     let newDimension = parseInt(slide.value);
     outputPixel.textContent = this.value;
@@ -93,11 +88,8 @@ function createRainbowColor(){
         if(e.target.classList.contains('drawSquare')){
             drawColor(e, randomRGBA())
         }
-    })
-    
+    }) 
 }
-
-
 
 //ERASE COLOR
 function eraseDrawTable(){
@@ -111,7 +103,6 @@ function eraseDrawTable(){
 }
 
 //CLEAR COLOR
-
 function clearTable(){
     window.location = window.location;
 }
