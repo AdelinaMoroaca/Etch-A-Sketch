@@ -13,19 +13,20 @@ let buttonClear = document.getElementById('clear');
 let colorPicker = document.getElementById('colorPicker');
 
 container.style.border = '2px solid black';
-container.style.backgroundColor = 'purple';
-container.style.width = '400px';
-container.style.height = '400px';
+container.style.backgroundColor = 'grey';
+container.style.width = '405px';
+container.style.height = '405px';
 container.style.display = 'flex';
 container.style.justifyContent = 'center';
 container.style.alignItems = 'center';
+container.style.boxShadow= '2px 2px 2px 5px #414141';
 
 drawTable.style.display = 'flex';
 drawTable.style.flexFlow = 'row wrap';
 drawTable.style.backgroundColor = 'white';
-drawTable.style.border = '2px solid black';
-drawTable.style.width = '300px';
-drawTable.style.height = '300px';
+drawTable.style.border = '1px solid black';
+drawTable.style.width = '400px';
+drawTable.style.height = '400px';
 container.appendChild(drawTable)
 
 let selectColor = 'black';
@@ -38,8 +39,8 @@ const gridTable = (num) => {
         for (j = 0; j < num; j++) {
             let square = document.createElement('div');
             square.classList.add('drawSquare');
-            square.style.height = `${300/num}px`;
-            square.style.width = `${300/num}px`;
+            square.style.height = `${400/num}px`;
+            square.style.width = `${400/num}px`;
             drawTable.appendChild(square);
 
             //1 method:
@@ -53,7 +54,6 @@ const gridTable = (num) => {
 gridTable(16)
 
 //CHANGE PIXEL NUMBER
-
 outputPixel.textContent = slide.value;
 function changePixelNumber(){
     let newDimension = parseInt(slide.value);

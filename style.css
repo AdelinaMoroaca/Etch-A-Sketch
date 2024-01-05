@@ -9,7 +9,7 @@
     --black:#000;
     --dark:#02051d;
 
-    --accent1-lighter:#cfcbcb;
+    --accent1-lighter:#e9e9e9;
     --accent1-light:#fb615a;
     --accent1:#ff1b26;
     --accent1-dark:#940008;
@@ -87,3 +87,4 @@ footer {
 .content-bar, .slide-bar{
     width: 100%;
 }
+
